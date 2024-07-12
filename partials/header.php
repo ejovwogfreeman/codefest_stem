@@ -28,7 +28,19 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <?php
+    // Get the current URL
+    $current_url = $_SERVER['REQUEST_URI'];
+
+    // Check if 'admin' is in the URL
+    if (strpos($current_url, 'admin') !== false) {
+        echo '<link href="../css/style.css" rel="stylesheet">';
+    } else {
+        echo '<link href="css/style.css" rel="stylesheet">';
+    }
+    ?>
+
 </head>
 
 <body>
@@ -43,7 +55,7 @@
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0" style="background-color: red;">
-            <a href="/codefest_stem" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <img src="img/logo.png" alt="" width="200px">
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -51,7 +63,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="/codefest_stem" class="nav-item nav-link active">Home</a>
+                    <a href="/" class="nav-item nav-link active">Home</a>
                     <!-- <a href="about" class="nav-item nav-link">About Us</a> -->
                     <!-- <a href="classes" class="nav-item nav-link">Classes</a> -->
                     <div class="nav-item dropdown">
@@ -59,24 +71,26 @@
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                             <a href="#about_us" class="dropdown-item">About Us</a>
                             <a href="#school_facilities" class="dropdown-item">School Facilities</a>
-                            <a href="#become_a_teacher" class="dropdown-item">Become A Teachers</a>
+                            <!-- <a href="#become_a_teacher" class="dropdown-item">Become A Teachers</a> -->
                             <a href="#school_classes" class="dropdown-item">School Classes</a>
-                            <a href="#make_appointment" class="dropdown-item">Make Appointment</a>
-                            <a href="#popular_teachers" class="dropdown-item">Popular Teachers</a>
+                            <!-- <a href="#make_appointment" class="dropdown-item">Make Appointment</a> -->
+                            <a href="#our_team" class="dropdown-item">Our Team</a>
                             <a href="#client_testimonials" class="dropdown-item">Cleint Testimonials</a>
                             <a href="#contact_us" class="dropdown-item">Contact Us</a>
                         </div>
                     </div>
-                    <div class="nav-item dropdown">
+                    <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Programs</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                             <a href="https://forms.gle/hxB8WLZ6zCbyyYfC7" target="_blank" class="dropdown-item">Summer Bootcamp</a>
                         </div>
-                    </div>
+                    </div> -->
                     <a href="blogs" class="nav-item nav-link">Blogs</a>
-                    <a href="schools" class="btn btn-primary rounded-pill px-3 d-block d-lg-none">School Partnering With Us<i class="fa fa-arrow-right ms-3"></i></a>
+                    <!-- <a href="schools" class="btn btn-primary rounded-pill px-3 d-block d-lg-none">School Partnering With Us<i class="fa fa-arrow-right ms-3"></i></a> -->
+                    <a href="bootcamp" class="btn btn-primary rounded-pill px-3 d-block d-lg-none">Summer Bootcamp<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
-                <a href="schools" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">School Partnering With Us<i class="fa fa-arrow-right ms-3"></i></a>
+                <!-- <a href="schools" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">School Partnering With Us<i class="fa fa-arrow-right ms-3"></i></a> -->
+                <a href="bootcamp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Summer Bootcamp<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </nav>
         <!-- Navbar End -->

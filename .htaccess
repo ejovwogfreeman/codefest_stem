@@ -8,7 +8,8 @@ RewriteRule ^ %1 [R=301,L]
 # Static Routes
 RewriteRule ^$ index.php [L]
 RewriteRule ^blogs$ blogs.php [L]
-RewriteRule ^schools$ schools.php [L]
+RewriteRule ^bootcamp$ bootcamp.php [L]
+# RewriteRule ^schools$ schools.php [L]
 
 # Catch-all rule for undefined routes
 RewriteCond %{REQUEST_FILENAME} !-f
