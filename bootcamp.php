@@ -110,7 +110,7 @@
             <div class="testimonial-item bg-light rounded p-5">
                 <p class="fs-5">My daughter is actually doing so well on it. Kudos to Codefest STEM program.</p>
                 <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 90px; height: 90px;">
+                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/avatar.jpg" style="width: 90px; height: 90px;">
                     <div class="ps-3">
                         <h3 class="mb-1">Mrs Sobayo</h3>
                         <span>Banker</span>
@@ -121,10 +121,10 @@
             <div class="testimonial-item bg-light rounded p-5">
                 <p class="fs-5">Tochukwu has learnt how to create games. She is enjoying the coding experience.</p>
                 <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" style="width: 90px; height: 90px;">
+                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/avatar.jpg" style="width: 90px; height: 90px;">
                     <div class="ps-3">
                         <h3 class="mb-1">Mr Okongwu</h3>
-                        <span>Business Man</span>
+                        <span>Technician</span>
                     </div>
                     <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                 </div>
@@ -132,10 +132,10 @@
             <div class="testimonial-item bg-light rounded p-5">
                 <p class="fs-5">Codefest is really doing a great Jobs, my Kids are most grateful for the program.</p>
                 <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" style="width: 90px; height: 90px;">
+                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/avatar.jpg" style="width: 90px; height: 90px;">
                     <div class="ps-3">
-                        <h3 class="mb-1">Mr Mark Powells</h3>
-                        <span>Mr Mike</span>
+                        <h3 class="mb-1">Mr Balogun</h3>
+                        <span>Trader</span>
                     </div>
                     <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                 </div>

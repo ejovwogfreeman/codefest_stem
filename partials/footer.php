@@ -29,34 +29,75 @@
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Photo Gallery</h3>
                         <div class="row g-2 pt-2">
-                            <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/classes-1.jpg" alt="">
+                            <?php
+                            if (strpos($url, 'admin') !== false) {
+                                echo '                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="../img/img7.jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/classes-2.jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="../img/img20.jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/classes-3.jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="../img/img38.jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/classes-4.jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="../img/img37.jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/classes-5.jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="../img/img36.jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/classes-6.jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="../img/img35.jpg" alt="">
+                            </div>';
+                            } else {
+                                echo '                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img7.jpg" alt="">
                             </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img20.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img38.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img37.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img36.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img35.jpg" alt="">
+                            </div>';
+                            }
+                            ?>
+                            <!-- <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img7.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img20.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img38.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img37.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img36.jpg" alt="">
+                            </div>
+                            <div class="col-4">
+                                <img class="img-fluid rounded bg-light p-1" src="img/img35.jpg" alt="">
+                            </div> -->
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <!-- <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Newsletter</h3>
                         <p>Sign Up for Our Newsletter</p>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
                             <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
                             <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="container">
@@ -85,19 +126,18 @@
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top" style="position: fixed; bottom: 20px; right: 20px"><i class="bi bi-arrow-up"></i></a>
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top" style="position: fixed; bottom: 20px; right: 20px; display: flex; align-items: center; justify-content: center"><i class="bi bi-arrow-up"></i></a>
         </div>
 
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/wow/wow.min.js"></script>
+        <!-- <script src="lib/wow/wow.min.js"></script> -->
         <script src="lib/easing/easing.min.js"></script>
         <script src="lib/waypoints/waypoints.min.js"></script>
         <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+
         <!-- Brevo Conversations {literal} -->
         <script>
             (function(d, w, c) {
@@ -112,6 +152,15 @@
             })(document, window, 'BrevoConversations');
         </script>
         <!-- /Brevo Conversations {/literal} -->
+        <?php
+        if (strpos($url, 'admin') !== false) {
+            echo '<script src="../lib/wow/wow.min.js"></script>';
+            echo '<script src="../js/main.js"></script>';
+        } else {
+            echo '<script src="lib/wow/wow.min.js"></script>';
+            echo '<script src="js/main.js"></script>';
+        }
+        ?>
         </body>
 
         </html>

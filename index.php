@@ -1,4 +1,47 @@
-<?php include('./partials/header.php') ?>
+<?php
+
+ob_start();
+
+include('./partials/header.php');
+require_once('./config/db.php'); // Include your database connection
+require_once('./config/random_id.php'); // Include your random ID generation function
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve and sanitize input
+    $appointmentId = random_id(); // Generate a unique appointment ID
+    $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $subject = trim($_POST['subject']);
+    $message = trim($_POST['message']);
+    $date_sent = date('Y-m-d H:i:s');
+
+    // Prepare the SQL statement
+    $stmt = mysqli_prepare($conn, "INSERT INTO appointments (appointment_id, name, email, subject, message, date_sent) VALUES (?, ?, ?, ?, ?, ?)");
+
+    // Bind the parameters (including date_sent)
+    mysqli_stmt_bind_param($stmt, 'ssssss', $appointmentId, $name, $email, $subject, $message, $date_sent);
+
+    // Execute the statement
+    if (mysqli_stmt_execute($stmt)) {
+        echo "<script>
+                alert('Appointment submitted successfully!');
+                window.location.href = 'http://localhost/codefest_stem';
+              </script>";
+        exit();
+    } else {
+        echo "Error: " . mysqli_error($conn); // Display error if execution fails
+    }
+
+    // Close the statement
+    mysqli_stmt_close($stmt);
+}
+
+// Close the database connection
+mysqli_close($conn);
+
+ob_end_flush();
+
+?>
 
 <style>
     .iframe-size {
@@ -18,7 +61,7 @@
 <div class="container-fluid p-0 mb-5">
     <div class="owl-carousel header-carousel position-relative">
         <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+            <img class="img-fluid" src="img/img11.jpg" alt="">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .5);">
                 <div class="container">
                     <div class="row justify-content-start">
@@ -33,7 +76,7 @@
             </div>
         </div>
         <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+            <img class="img-fluid" src="img/img27.jpg" alt="">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .5);">
                 <div class="container">
                     <div class="row justify-content-start">
@@ -93,13 +136,13 @@
             <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/about-1.jpg" alt="">
+                        <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/img9.jpg" alt="">
                     </div>
                     <div class="col-6 text-start" style="margin-top: -150px;">
-                        <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-2.jpg" alt="">
+                        <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/img20.jpg" alt="">
                     </div>
                     <div class="col-6 text-end" style="margin-top: -150px;">
-                        <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-3.jpg" alt="">
+                        <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/img22.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -211,7 +254,7 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="classes-item">
                     <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                        <img class="img-fluid rounded-circle" src="img/classes-1.jpg" alt="">
+                        <img class="img-fluid rounded-circle" src="img/img7.jpg" alt="">
                     </div>
                     <div class="bg-light rounded p-4 pt-5 mt-n5">
                         <a class="d-block text-center h3 mt-3 mb-4" href="">STEM Programs</a>
@@ -222,7 +265,7 @@
                                     <small>3 Months</small>
                                 </div>
                             </div>
-                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">Enroll Now</span>
                         </div>
                         <div class="row g-1">
                             <div class="col-4">
@@ -250,7 +293,7 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="classes-item">
                     <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                        <img class="img-fluid rounded-circle" src="img/classes-2.jpg" alt="">
+                        <img class="img-fluid rounded-circle" src="img/img20.jpg" alt="">
                     </div>
                     <div class="bg-light rounded p-4 pt-5 mt-n5">
                         <a class="d-block text-center h3 mt-3 mb-4" href="">Robotics and AI</a>
@@ -261,7 +304,7 @@
                                     <small>3 Months</small>
                                 </div>
                             </div>
-                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">Enroll Now</span>
                         </div>
                         <div class="row g-1">
                             <div class="col-4">
@@ -289,7 +332,7 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="classes-item">
                     <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                        <img class="img-fluid rounded-circle" src="img/classes-3.jpg" alt="">
+                        <img class="img-fluid rounded-circle" src="img/img38.jpg" alt="">
                     </div>
                     <div class="bg-light rounded p-4 pt-5 mt-n5">
                         <a class="d-block text-center h3 mt-3 mb-4" href="">Computer Appreciation</a>
@@ -300,7 +343,7 @@
                                     <small>3 Months</small>
                                 </div>
                             </div>
-                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">Enroll Now</span>
                         </div>
                         <div class="row g-1">
                             <div class="col-4">
@@ -328,7 +371,7 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="classes-item">
                     <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                        <img class="img-fluid rounded-circle" src="img/classes-4.jpg" alt="">
+                        <img class="img-fluid rounded-circle" src="img/img37.jpg" alt="">
                     </div>
                     <div class="bg-light rounded p-4 pt-5 mt-n5">
                         <a class="d-block text-center h3 mt-3 mb-4" href="">Frontend Web Development</a>
@@ -339,7 +382,7 @@
                                     <small>3 Months</small>
                                 </div>
                             </div>
-                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">Enroll Now</span>
                         </div>
                         <div class="row g-1">
                             <div class="col-4">
@@ -367,7 +410,7 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="classes-item">
                     <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                        <img class="img-fluid rounded-circle" src="img/classes-5.jpg" alt="">
+                        <img class="img-fluid rounded-circle" src="img/img36.jpg" alt="">
                     </div>
                     <div class="bg-light rounded p-4 pt-5 mt-n5">
                         <a class="d-block text-center h3 mt-3 mb-4" href="">Scratch Programming</a>
@@ -378,7 +421,7 @@
                                     <small>3 Months</small>
                                 </div>
                             </div>
-                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">Enroll Now</span>
                         </div>
                         <div class="row g-1">
                             <div class="col-4">
@@ -406,7 +449,7 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="classes-item">
                     <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                        <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                        <img class="img-fluid rounded-circle" src="img/img35.jpg" alt="">
                     </div>
                     <div class="bg-light rounded p-4 pt-5 mt-n5">
                         <a class="d-block text-center h3 mt-3 mb-4" href="">Python Programming</a>
@@ -417,7 +460,7 @@
                                     <small>3 Months</small>
                                 </div>
                             </div>
-                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+                            <span class="bg-primary text-white rounded-pill py-2 px-3" href="">Enroll Now</span>
                         </div>
                         <div class="row g-1">
                             <div class="col-4">
@@ -515,9 +558,13 @@
             <p>Our team comprises expert educators and tech professionals dedicated to shaping future innovators through unparalleled guidance and support.</p>
         </div>
         <div class="row g-4">
+            <img src="img/img1.jpg" alt="" class="rounded w-100">
+            <img src="img/img4.jpg" alt="" class="rounded w-100">
+        </div>
+        <!-- <div class="row g-4">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="team-item position-relative">
-                    <img class="img-fluid rounded-circle w-75" src="img/team-1.jpg" alt="">
+                    <img class="img-fluid rounded-circle w-75" src="img/team-2.jpg" alt="">
                     <div class="team-text">
                         <h3>Mrs Ann Nzeh</h3>
                         <p>Admin</p>
@@ -531,7 +578,7 @@
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="team-item position-relative">
-                    <img class="img-fluid rounded-circle w-75" src="img/team-2.jpg" alt="">
+                    <img class="img-fluid rounded-circle w-75" src="img/team-1.jpg" alt="">
                     <div class="team-text">
                         <h3>Mr Moss Uromtah</h3>
                         <p>President</p>
@@ -557,7 +604,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 <!-- Team End -->
@@ -574,10 +621,10 @@
             <div class="testimonial-item bg-light rounded p-5">
                 <p class="fs-5">Sending my child to Codefest was the best decision! They've flourished in tech skills and creativity, thanks to engaging classes and supportive mentors.</p>
                 <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg" style="width: 90px; height: 90px;">
+                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/avatar.jpg" style="width: 90px; height: 90px;">
                     <div class="ps-3">
-                        <h3 class="mb-1">Mrs Sally Smith</h3>
-                        <span>Banker</span>
+                        <h3 class="mb-1">Mrs Ngozi</h3>
+                        <span>Accountant</span>
                     </div>
                     <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
                 </div>
@@ -585,9 +632,9 @@
             <div class="testimonial-item bg-light rounded p-5">
                 <p class="fs-5">Codefest has transformed my child's learning journey. They're now confident in coding and problem-solving, equipped with real-world skills for the future.</p>
                 <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg" style="width: 90px; height: 90px;">
+                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/avatar.jpg" style="width: 90px; height: 90px;">
                     <div class="ps-3">
-                        <h3 class="mb-1">Mr John Doe</h3>
+                        <h3 class="mb-1">Mr Emeka</h3>
                         <span>Business Man</span>
                     </div>
                     <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
@@ -596,9 +643,9 @@
             <div class="testimonial-item bg-light rounded p-5">
                 <p class="fs-5">Codefest offers top-notch tech education. My child enjoys interactive classes and innovative projects, fostering a passion for learning and exploration. Excellent Job.</p>
                 <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" style="width: 90px; height: 90px;">
+                    <img class="img-fluid flex-shrink-0 rounded-circle" src="img/avatar.jpg" style="width: 90px; height: 90px;">
                     <div class="ps-3">
-                        <h3 class="mb-1">Mr Mark Powells</h3>
+                        <h3 class="mb-1">Mr Ade</h3>
                         <span>Engineer</span>
                     </div>
                     <i class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"></i>
@@ -641,29 +688,29 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="h-100 d-flex flex-column justify-content-center p-5">
                         <h1 class="mb-4">Make Appointment</h1>
-                        <form>
+                        <form method="POST"> <!-- Specify the PHP file for form submission -->
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="name" placeholder="Your Name">
+                                        <input type="text" class="form-control border-0" id="name" name="name" placeholder="Your Name" required> <!-- Added name and required attribute -->
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control border-0" id="email" placeholder="Your Email">
+                                        <input type="email" class="form-control border-0" id="email" name="email" placeholder="Your Email" required> <!-- Added name and required attribute -->
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="subject" placeholder="Subject">
+                                        <input type="text" class="form-control border-0" id="subject" name="subject" placeholder="Subject" required> <!-- Added name and required attribute -->
                                         <label for="subject">Subject</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                        <textarea class="form-control border-0" placeholder="Leave a message here" id="message" name="message" style="height: 100px" required></textarea> <!-- Added name and required attribute -->
                                         <label for="message">Message</label>
                                     </div>
                                 </div>

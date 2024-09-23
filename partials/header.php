@@ -27,20 +27,18 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <!-- <link href="css/style.css" rel="stylesheet"> -->
-    <?php
-    // Get the current URL
-    $current_url = $_SERVER['REQUEST_URI'];
 
-    // Check if 'admin' is in the URL
-    if (strpos($current_url, 'admin') !== false) {
-        echo '<link href="../css/style.css" rel="stylesheet">';
+    <?php
+    $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+    if (strpos($url, 'admin') !== false) {
+        echo '<link rel="stylesheet" href="../css/style.css">';
+        echo '<link href="../css/bootstrap.min.css" rel="stylesheet" />';
     } else {
-        echo '<link href="css/style.css" rel="stylesheet">';
+        echo '<link href="css/style.css" rel="stylesheet" />';
+        echo '<link href="css/bootstrap.min.css" rel="stylesheet" />';
     }
     ?>
-
 </head>
 
 <body>
@@ -55,8 +53,14 @@
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0" style="background-color: red;">
-            <a href="/" class="navbar-brand">
-                <img src="img/logo.png" alt="" width="200px">
+            <a href="http://localhost/codefest_stem" class="navbar-brand">
+                <?php
+                if (strpos($url, 'admin') !== false) {
+                    echo '<img src="../img/logo.png" alt="" width="200px">';
+                } else {
+                    echo '<img src="img/logo.png" alt="" width="200px">';
+                }
+                ?>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
